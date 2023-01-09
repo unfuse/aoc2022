@@ -4,19 +4,21 @@ fn main() {
     let input: String = fs::read_to_string("src/bin/day01.txt").expect("Could not read file");
     let items: Vec<Vec<i32>> = input
         .split("\n\n")
-        .map(|s| -> Vec<i32> { 
+        .map(|s| -> Vec<i32> {
             s.lines()
-            .map(|f| -> i32 { f.parse::<i32>().unwrap()})
-            .collect()
+                .map(|f| -> i32 { f.parse::<i32>().unwrap() })
+                .collect()
         })
         .collect();
 
     let cal_sums: Vec<i32> = items
-    .into_iter()
-    .map(|f| -> i32 { 
-        f.into_iter().reduce(|a, b| -> i32 { a + b }).expect("could not reduce array")
-    } )
-    .collect();
+        .into_iter()
+        .map(|f| -> i32 {
+            f.into_iter()
+                .reduce(|a, b| -> i32 { a + b })
+                .expect("could not reduce array")
+        })
+        .collect();
 
     // part 1
     let max_cal: &i32 = cal_sums.iter().max().expect("could not find max");
