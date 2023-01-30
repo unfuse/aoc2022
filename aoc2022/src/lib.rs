@@ -70,7 +70,7 @@ pub mod data {
                 for x in 0..self.width {
                     write!(f, "{}", self.get(x, y).unwrap())?;
                 }
-                println!();
+                writeln!(f)?;
             }
 
             write!(f, "")
