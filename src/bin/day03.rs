@@ -41,9 +41,9 @@ fn main() {
         let second: HashSet<char> = set[1].chars().collect();
         let third: HashSet<char> = set[2].chars().collect();
 
-        let fs: HashSet<char> = first.intersection(&second).map(|f| *f).collect();
+        let fs: HashSet<char> = first.intersection(&second).copied().collect();
 
-        let fst: HashSet<char> = fs.intersection(&third).map(|f| *f).collect();
+        let fst: HashSet<char> = fs.intersection(&third).copied().collect();
         assert!(fst.len() == 1, "intersection contained more than 1");
 
         let item = fst.iter().next().expect("no item found");

@@ -93,14 +93,14 @@ struct Match {
 
 impl Match {
     fn _from_str_p1(input: &str) -> Match {
-        match input.split_once(" ") {
+        match input.split_once(' ') {
             Some((them, us)) => Match::from_throws(Throw::from(us), Throw::from(them)),
             None => panic!("Could not parse match {}", input),
         }
     }
 
     fn from_str_p2(input: &str) -> Match {
-        match input.split_once(" ") {
+        match input.split_once(' ') {
             Some((them, us)) => {
                 let their_throw = Throw::from(them);
                 Match::from_throws(their_throw.decode(Outcome::from(us)), their_throw)

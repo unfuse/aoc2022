@@ -7,7 +7,7 @@ fn main() {
         .lines()
         .into_iter()
         .map(|row| {
-            let (left, right) = row.split_once(",").expect("could not split pair");
+            let (left, right) = row.split_once(',').expect("could not split pair");
             (get_range_from_str(left), get_range_from_str(right))
         })
         .collect();
@@ -28,10 +28,10 @@ fn main() {
 }
 
 fn get_range_from_str(from: &str) -> RangeInclusive<usize> {
-    let (low, high) = from.split_once("-").expect("could not split range");
+    let (low, high) = from.split_once('-').expect("could not split range");
     RangeInclusive::new(
-        usize::from_str_radix(low, 10).expect("could not process low"),
-        usize::from_str_radix(high, 10).expect("could not process high"),
+        low.parse::<usize>().expect("could not process low"),
+        high.parse::<usize>().expect("could not process high"),
     )
 }
 

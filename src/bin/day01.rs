@@ -2,17 +2,14 @@ use std::fs;
 
 fn main() {
     let input: String = fs::read_to_string("src/bin/day01.txt").expect("Could not read file");
-    let items: Vec<Vec<i32>> = input
+
+    let cal_sums: Vec<i32> = input
         .split("\n\n")
         .map(|s| -> Vec<i32> {
             s.lines()
                 .map(|f| -> i32 { f.parse::<i32>().unwrap() })
                 .collect()
         })
-        .collect();
-
-    let cal_sums: Vec<i32> = items
-        .into_iter()
         .map(|f| -> i32 {
             f.into_iter()
                 .reduce(|a, b| -> i32 { a + b })
